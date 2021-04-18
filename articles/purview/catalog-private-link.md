@@ -160,7 +160,7 @@ There are 2 ways you can add Purview private endpoints after creating your Purvi
 > [!NOTE]
 > You will need to follow the same steps as above for the target sub-resource selected as **Portal** as well.
 
-## Firewalls to restrict public access
+## Firewalls to restrict public access 
 
 To cut off access to the Purview account completely from public internet, follow the steps below. This setting will apply to both private endpoint and ingestion private endpoint connections.
 
@@ -168,9 +168,19 @@ To cut off access to the Purview account completely from public internet, follow
 1. Navigate to the firewall tab and ensure that the toggle is set to **Deny**.
 
     :::image type="content" source="media/catalog-private-link/private-endpoint-firewall.png" alt-text="Private endpoint firewall settings":::
+    
+## OPTIONAL: Restrict access during ingestion
+
+This paragraph applies only if you decide NOT to use private endpoints and you want to restrict access of your Self-Hosted Integrated Runtime VM during ingestion of the metadata. Then you will need to navigate to your VM in the Azure portal, select Networking tab under Settings section. Then Select Outbound port rules and click Add outbound port rule. 
+In this case, open a Command prompt on the VM and ping this url (scan.purview.azure.com) & (catalog.purview.azure.com), get their corresponding IP, and then add an outbound port rule for the IP in VM's network security rules
+
+
 
 ## Next steps
 
 - [Browse the Azure Purview Data Catalog](how-to-browse-catalog.md)
 
 - [Search the Azure Purview Data Catalog](how-to-search-catalog.md)
+
+
+
